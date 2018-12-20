@@ -1,0 +1,26 @@
+//程序用来读多个number直到-1为止，数目不定
+#include<stdio.h>
+typedef struct_node{
+	int value;
+	struct_node *next;//不能直接用Node，因为编译器还不认得它
+}Node
+int main(int argc,char *argv[]){
+	Node *head=NULL;
+	int number;
+	do{
+		scanf("%d",&number);
+		if(number!=-1){//add to linked_list
+		    Node *p = (Node*)malloc(sizeof(Node));
+			p->value = number;
+			p->next =NULL;//find the last
+			Node *last=head;
+			if(last){
+				while(last->next){
+					last=last->next;
+				}//attach
+				last->next = p;
+			} else {
+				head = p;
+			}
+		}
+    }while(number!=-1);  		
